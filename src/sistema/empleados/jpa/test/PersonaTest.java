@@ -6,7 +6,7 @@ public class PersonaTest {
 
     public static void main(String[] args) {
         TbPersonaDao pdao = new TbPersonaDao();
-        String mensaje = pdao.insertarPersona("Juan Jose", "Marquez Juarez", 34, "955678345");
+        String mensaje = pdao.insertarPersona("Alberto Eli", "Ojeda Perez", 34, "955111345");
         System.out.println(mensaje);
     }
 }

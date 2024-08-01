@@ -100,29 +100,4 @@ public class Tbpersona implements Serializable {
         this.telefono = telefono;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idtbpersona != null ? idtbpersona.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Tbpersona)) {
-            return false;
-        }
-        Tbpersona other = (Tbpersona) object;
-        if ((this.idtbpersona == null && other.idtbpersona != null) || (this.idtbpersona != null && !this.idtbpersona.equals(other.idtbpersona))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "sistema.empleados.jpa.entity.Tbpersona[ idtbpersona=" + idtbpersona + " ]";
-    }
-    
 }

@@ -30,6 +30,11 @@ public class TbpersonaJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
+    /*crearemos un constructor vacio*/
+    public TbpersonaJpaController() {
+
+    }
+
     public void create(Tbpersona tbpersona) {
         EntityManager em = null;
         try {
@@ -133,5 +138,5 @@ public class TbpersonaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

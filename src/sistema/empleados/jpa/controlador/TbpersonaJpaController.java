@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import sistema.empleados.jpa.controlador.exceptions.NonexistentEntityException;
-import sistema.empleados.jpa.entity.Tbpersona;
+import sistema.empleados.jpa.entity.TbPersona;
 
 /**
  *
@@ -36,7 +36,7 @@ public class TbpersonaJpaController implements Serializable {
 
     }
 
-    public void create(Tbpersona tbpersona) {
+    public void create(TbPersona tbpersona) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -50,7 +50,7 @@ public class TbpersonaJpaController implements Serializable {
         }
     }
 
-    public void edit(Tbpersona tbpersona) throws NonexistentEntityException, Exception {
+    public void edit(TbPersona tbpersona) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -78,9 +78,9 @@ public class TbpersonaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Tbpersona tbpersona;
+            TbPersona tbpersona;
             try {
-                tbpersona = em.getReference(Tbpersona.class, id);
+                tbpersona = em.getReference(TbPersona.class, id);
                 tbpersona.getIdtbpersona();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The tbpersona with id " + id + " no longer exists.", enfe);
@@ -94,19 +94,19 @@ public class TbpersonaJpaController implements Serializable {
         }
     }
 
-    public List<Tbpersona> findTbpersonaEntities() {
+    public List<TbPersona> findTbpersonaEntities() {
         return findTbpersonaEntities(true, -1, -1);
     }
 
-    public List<Tbpersona> findTbpersonaEntities(int maxResults, int firstResult) {
+    public List<TbPersona> findTbpersonaEntities(int maxResults, int firstResult) {
         return findTbpersonaEntities(false, maxResults, firstResult);
     }
 
-    private List<Tbpersona> findTbpersonaEntities(boolean all, int maxResults, int firstResult) {
+    private List<TbPersona> findTbpersonaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Tbpersona.class));
+            cq.select(cq.from(TbPersona.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -118,10 +118,10 @@ public class TbpersonaJpaController implements Serializable {
         }
     }
 
-    public Tbpersona findTbpersona(Integer id) {
+    public TbPersona findTbpersona(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Tbpersona.class, id);
+            return em.find(TbPersona.class, id);
         } finally {
             em.close();
         }
@@ -131,7 +131,7 @@ public class TbpersonaJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Tbpersona> rt = cq.from(Tbpersona.class);
+            Root<TbPersona> rt = cq.from(TbPersona.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

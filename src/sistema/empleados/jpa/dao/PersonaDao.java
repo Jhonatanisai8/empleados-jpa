@@ -1,16 +1,26 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package sistema.empleados.jpa.dao;
 
+/**
+ *
+ * @author User
+ */
 import sistema.empleados.jpa.controlador.TbpersonaJpaController;
 import sistema.empleados.jpa.entity.Tbpersona;
 
-public class tbPersonaDAO {
+public class PersonaDao {
 
     private TbpersonaJpaController tjc = new TbpersonaJpaController();
-    private  Tbpersona persona = new Tbpersona();
+    private Tbpersona persona = new Tbpersona();
+
     /*
     métodos
      */
-    public String insertarPersona(String nombres,String apellidos,int edad,String telefono) {
+    private String mensaje = "";
+    public String insertarPersona(String nombres, String apellidos, int edad, String telefono) {
         try {
             persona.setIdtbpersona(Integer.BYTES);
             persona.setNombres(nombres);
@@ -19,10 +29,14 @@ public class tbPersonaDAO {
             persona.setTelefono(telefono);
 
             tjc.create(persona);
-        } catch (Exception e) {
             
+            
+            mensaje = "guardado";
+        } catch (Exception e) {
+            mensaje = "no se pudo guardar persona";
+            System.out.println("no se pudo guardar ocurrio un error =>"+e.getMessage());
         }
-        return null;
+        return mensaje;
     }
 
     public String actualizarPersona() {
